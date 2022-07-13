@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  password    String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @default(now())
+  credentials Credential[]
+  safeNotes   SafeNote[]
+  cards       Card[]
+  wifiNets    Wifi[]
+}
+
+model Credential {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  username  String
+  password  String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model SafeNote {
+  id        Int      @id @default(autoincrement())
+  title     String   @unique
+  content   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Card {
+  id           Int       @id @default(autoincrement())
+  label        String
+  number       String
+  nameInCard   String
+  securityCode Int
+  expiryDate   DateTime
+  password     String
+  isVirtual    Boolean
+  type         cardTypes
+  user         User      @relation(fields: [userId], references: [id])
+  userId       Int
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @default(now())
+}
+
+model Wifi {
+  id        Int      @id @default(autoincrement())
+  ssid      String   @unique
+  password  String
+  label     String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+enum cardTypes {
+  credit
+  debit
+  creditAndDebit
+}

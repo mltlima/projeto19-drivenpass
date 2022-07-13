@@ -12,3 +12,17 @@ export async function signUp(email: string, password: string) {
 
     await userRepository.createNewUser(email, passwordHash);
 }
+
+export async function signIn(email: string, password: string) {
+    const user = await userRepository.getUserByEmail(email);
+    if (!user) {
+        throw new Error('User not found');
+    }
+
+    const isValid = bcrypt.compareSync(password, user.password);
+    if (!isValid) {
+        throw new Error('Invalid password');
+    }
+
+    return user;
+}

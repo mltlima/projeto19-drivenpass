@@ -30,5 +30,3 @@ export async function getUserById(id: number) {
         }
     });
 }
-
-

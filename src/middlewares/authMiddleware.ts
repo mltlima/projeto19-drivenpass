@@ -7,13 +7,14 @@ export async function validateToken(req: Request, res: Response, next: NextFunct
   const secretKey = process.env.JWT_TOKEN;
 
   if (!token) {
-    return res.sendStatus(401);
+    throw new Error("invalid token");
   }
-   
+
   const user = jwt.verify(token, secretKey!);
   if (!user) {
-    return res.status(401);
+    throw new Error("user not found");
   }
+
   res.locals.user = user;
   next();
   

@@ -1,5 +1,3 @@
-
-
 import * as credentialRepository from '../repositories/credentialRepository.js';
 
 export async function createCredential( credential: credentialRepository.Credential, userId: number ) {

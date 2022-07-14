@@ -12,9 +12,15 @@ const credentialSchema = Joi.object().keys({
     name: Joi.string().required(),
 });
 
+const safenoteSchema = Joi.object().keys({
+    title: Joi.string().max(50).required(),
+    content: Joi.string().max(1000).required(),
+});
+
 const schemas = {
     userSchema,
     credentialSchema,
+    safenoteSchema,
 };
 
 export default schemas;

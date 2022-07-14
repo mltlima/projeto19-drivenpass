@@ -30,11 +30,18 @@ const cardSchema = Joi.object().keys({
     type: Joi.string().valid('credit', 'debit', 'creditAndDebit').required(),
 });
 
+const wifiSchema = Joi.object().keys({
+    ssid: Joi.string().required(),
+    password: Joi.string().required(),
+    label: Joi.string().required(),
+});
+
 const schemas = {
     userSchema,
     credentialSchema,
     safenoteSchema,
     cardSchema,
+    wifiSchema
 };
 
 export default schemas;

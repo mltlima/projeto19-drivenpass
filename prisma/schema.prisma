@@ -62,7 +62,7 @@ model Card {
 
 model Wifi {
   id        Int      @id @default(autoincrement())
-  ssid      String   @unique
+  ssid      String
   password  String
   label     String
   user      User     @relation(fields: [userId], references: [id])

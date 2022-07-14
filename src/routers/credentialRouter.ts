@@ -10,5 +10,7 @@ const credentialRouter = Router();
 credentialRouter.use(validateToken);
 
 credentialRouter.post("/credential", validateSchema(schemas.credentialSchema), credentialController.newCredential);
+credentialRouter.get("/credential/:id", credentialController.getCredentialById);
+credentialRouter.get("/credentials", credentialController.getAllCredentials);
 
 export default credentialRouter;

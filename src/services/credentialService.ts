@@ -10,3 +10,20 @@ export async function createCredential( credential: credentialRepository.Credent
 
     await credentialRepository.createCredential(credential, userId);
 }
+
+export async function getCredentialById(id: number, userId: number) {
+    const credential = await credentialRepository.getCredentialById(id);
+    if (!credential) {
+        throw new Error('Credential not found');
+    }
+
+    if (credential.userId !== userId) {
+        throw new Error('Credential belongs to another user');
+    }
+
+    return await credentialRepository.getCredentialById(id);
+}
+
+export async function getAllCredentials(userId: number) {
+    return await credentialRepository.getAllCredentials(userId);
+}

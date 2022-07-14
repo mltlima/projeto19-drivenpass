@@ -24,6 +24,14 @@ export async function getCredentialById(id: number) {
     });
 }
 
+export async function getAllCredentials(userId: number) {
+    return await prisma.credential.findMany({
+        where: {
+            userId
+        }
+    });
+}
+
 export async function deleteCredential(id: number) {
     return await prisma.credential.delete({
         where: {

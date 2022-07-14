@@ -19,7 +19,7 @@ export async function getSafenoteById(id: number, userId: number) {
         throw new Error('Safenote belongs to another user');
     }
 
-    return await safenoteRepository.getSafenoteById(id);
+    return safenote;
 }
 
 export async function getAllSafenotes(userId: number) {

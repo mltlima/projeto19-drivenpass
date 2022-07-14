@@ -49,8 +49,8 @@ model Card {
   label        String
   number       String
   nameInCard   String
-  securityCode Int
-  expiryDate   DateTime
+  securityCode String
+  expiryDate   String
   password     String
   isVirtual    Boolean
   type         cardTypes

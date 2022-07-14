@@ -1,9 +1,6 @@
 import { Request, Response } from 'express';
-import Cryptr from 'cryptr';
 
 import * as safenoteService from '../services/safenoteService.js';
-
-const cryptr = new Cryptr(process.env.SECRET_KEY!);
 
 export async function newSafenote(req: Request, res: Response) {
     const { title, content } = req.body;

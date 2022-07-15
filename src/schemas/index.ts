@@ -36,12 +36,22 @@ const wifiSchema = Joi.object().keys({
     label: Joi.string().required(),
 });
 
+const documentSchema = Joi.object().keys({
+    fullName: Joi.string().required(),
+    emissionDate: joi.date().format(['DD/MM/YYYY', 'DD-MM-YYYY']).required(),
+    expiryDate: joi.date().format(['DD/MM/YYYY', 'DD-MM-YYYY']).required(),
+    registrationNumber: Joi.string().required(),
+    issuingAuthority: Joi.string().required(),
+    type: Joi.string().valid('RG', 'CNH').required(),
+});
+
 const schemas = {
     userSchema,
     credentialSchema,
     safenoteSchema,
     cardSchema,
-    wifiSchema
+    wifiSchema,
+    documentSchema
 };
 
 export default schemas;

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.ts",
+    "start": "node dist/index.ts",
     "dev": "nodemon src/app.ts"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "@types/joi": "^17.2.3",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^18.0.3",
+    "@types/pg": "^8.6.5",
     "nodemon": "^2.0.19",
     "prisma": "^4.0.0",
     "ts-node": "^10.8.2",
